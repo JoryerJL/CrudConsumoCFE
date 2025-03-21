@@ -1,0 +1,203 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Meta -->
+    <meta name="description" content="Responsive Bootstrap Admin Dashboards">
+    <meta name="author" content="Bootstrap Gallery" />
+    <link rel="canonical" href="https://www.bootstrap.gallery/">
+    <meta property="og:url" content="https://www.bootstrap.gallery">
+    <meta property="og:title" content="Admin Templates - Dashboard Templates | Bootstrap Gallery">
+    <meta property="og:description" content="Marketplace for Bootstrap Admin Dashboards">
+    <meta property="og:type" content="Website">
+    <meta property="og:site_name" content="Bootstrap Gallery">
+    <link rel="shortcut icon" href="{% static '' %} 'assets/images/favicon.svg' %}">
+
+    <!-- Title -->
+    <title>Free Admin Dashboards</title>
+
+    <!-- *************
+			************ Common Css Files *************
+		************ -->
+
+    <!-- Animated css -->
+    <link rel="stylesheet" href="{% static 'assets/css/animate.css' %}">
+
+    <!-- Bootstrap font icons css -->
+    <link rel="stylesheet" href="{% static 'assets/fonts/bootstrap/bootstrap-icons.css' %}">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="{%  static 'assets/css/main.min.css' %}">
+
+
+    <!-- *************
+			************ Vendor Css Files *************
+		************ -->
+
+    <!-- Scrollbar CSS -->
+    <link rel="stylesheet" href="{% static 'assets/vendor/overlay-scroll/OverlayScrollbars.min.css' %}">
+
+  </head>
+
+  <body>
+
+    <!-- Loading wrapper start -->
+    <div id="loading-wrapper">
+      <div class="spinner">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+        <div class="line4"></div>
+        <div class="line5"></div>
+        <div class="line6"></div>
+      </div>
+    </div>
+    <!-- Loading wrapper end -->
+
+    <!-- Page wrapper start -->
+    <div class="page-wrapper">
+
+      <!-- Sidebar wrapper start -->
+      {% include 'sidebar.html' %}
+      <!-- Sidebar wrapper end -->
+
+      <!-- *************
+				************ Main container start *************
+			************* -->
+      <div class="main-container">
+
+        <!-- Page header starts -->
+        <div class="page-header">
+
+          <div class="toggle-sidebar" id="toggle-sidebar"><i class="bi bi-list"></i></div>
+
+          <!-- Header actions ccontainer start -->
+          <div class="header-actions-container">
+
+            <!-- Search container start -->
+            <div class="search-container">
+
+              <!-- Search input group start -->
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search">
+                <button class="btn" type="button">
+                  <i class="bi bi-search"></i>
+                </button>
+              </div>
+              <!-- Search input group end -->
+
+            </div>
+            <!-- Search container end -->
+
+            <!-- Header actions start -->
+            <ul class="header-actions">
+
+              <!-- Messages start -->
+              <li class="dropdown">
+                <a href="#" data-toggle="dropdown" aria-haspopup="true">
+                  <i class="bi bi-bell fs-4 lh-1"></i>
+                </a>
+              </li>
+              <!-- Messages end -->
+              <li class="dropdown">
+                <a href="#" id="userSettings" class="user-settings" data-toggle="dropdown" aria-haspopup="true">
+                  <span class="user-name d-none d-md-block">Tony Robbins</span>
+                  <span class="avatar">
+                    <img src="{% static 'assets/images/user3.png' %}" alt="Free Admin Templates">
+                    <span class="status busy"></span>
+                  </span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="userSettings">
+                  <div class="header-profile-actions">
+                    <a href="#">Logout</a>
+                  </div>
+                </div>
+              </li>
+            </ul>
+            <!-- Header actions end -->
+
+          </div>
+          <!-- Header actions ccontainer end -->
+
+        </div>
+        <!-- Page header ends -->
+
+        <!-- Content wrapper scroll start -->
+        <div class="content-wrapper-scroll">
+
+          <!-- Content wrapper start -->
+            <div class="content-wrapper">
+                <div id="alert"></div>
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-{% if message.tags == 'error' %}danger{% else %}{{ message.tags }}{% endif %} alert-dismissible fade show mt-2"
+                             role="alert">
+                            {{ message }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+
+                {% block content %}{% endblock %}
+
+            </div>
+          <!-- Content wrapper end -->
+
+          <!-- App Footer start -->
+          <div class="app-footer">
+            <span>© Bootstrap Gallery 2023</span>
+          </div>
+          <!-- App footer end -->
+
+        </div>
+        <!-- Content wrapper scroll end -->
+
+      </div>
+      <!-- *************
+				************ Main container end *************
+			************* -->
+
+    </div>
+    <!-- Page wrapper end -->
+
+    <!-- *************
+			************ Required JavaScript Files *************
+		************* -->
+    <!-- Required jQuery first, then Bootstrap Bundle JS -->
+    <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'assets/js/modernizr.js' %}"></script>
+    <script src="{% static 'assets/js/moment.js' %}"></script>
+
+    <!-- *************
+			************ Vendor Js Files *************
+		************* -->
+
+    <!-- Overlay Scroll JS -->
+    <script src="{% static 'assets/vendor/overlay-scroll/jquery.overlayScrollbars.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/overlay-scroll/custom-scrollbar.js' %}"></script>
+
+    <!-- Apex Charts -->
+    <script src="{% static 'assets/vendor/apex/apexcharts.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/apex/custom/sales/sparkline.js' %}"></script>
+    <script src="{% static 'assets/vendor/apex/custom/sales/salesGraph.js' %}"></script>
+    <script src="{% static 'assets/vendor/apex/custom/sales/revenueGraph.js' %}"></script>
+    <script src="{% static 'assets/vendor/apex/custom/sales/taskGraph.js' %}"></script>
+
+    <!-- Vector Maps -->
+    <script src="{% static 'assets/vendor/jvectormap/jquery-jvectormap-2.0.5.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/jvectormap/world-mill-en.js' %}"></script>
+    <script src="{% static 'assets/vendor/jvectormap/gdp-data.js' %}"></script>
+    <script src="{% static 'assets/vendor/jvectormap/custom/world-map-markers2.js' %}"></script>
+
+    <!-- Main Js Required -->
+    <script src="{% static 'assets/js/main.js' %}"></script>
+
+  </body>
+
+</html>
