@@ -12,6 +12,10 @@ class ServiceForm(forms.ModelForm):
     class Meta:
         model = Service
         fields = ['service_number', 'client', 'meter_number', 'rmu', 'rate', 'threads', 'account']
+        labels = {
+            'client': 'Cliente',
+            'rate': 'Tarifa',
+        }
 
 class RateForm(forms.ModelForm):
     rate = forms.DecimalField(label='Rate', help_text='Ingresa tu tarifa',required=True)
