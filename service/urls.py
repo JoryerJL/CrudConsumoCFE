@@ -1,6 +1,6 @@
-from .views import home
+from .views import ServiceList
 from django.urls import path, include
 
 urlpatterns = [
-    path('', home, name='home'),
+    path('', ServiceList.as_view(), name='service_list'),
 ]

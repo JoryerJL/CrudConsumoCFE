@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title">Servicios</h4>
+            <a class="btn btn-success" href="#">Crear Servicio</a>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table id="basicExample" class="table custom-table">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>No de servicio</th>
+                        <th>Cliente</th>
+                        <th>Número de medidor</th>
+                        <th>RMU</th>
+                        <th>Tarifa</th>
+                        <th>Hilos</th>
+                        <th>Cuenta</th>
+                        <th>Opciones</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for service in services %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ service.service_number}}</td>
+                            <td>{{ service.client }}</td>
+                            <td>{{ service.meter_number }}</td>
+                            <td>{{ service.rmu }}</td>
+                            <td>{{ service.rate }}</td>
+                            <td>{{ service.threads }}</td>
+                            <td>{{ service.account }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

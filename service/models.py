@@ -3,7 +3,7 @@ from client.models import Client
 from common.models import CommonBaseModel
 
 class Rate(CommonBaseModel):
-    rate = models.DecimalField(max_digits=10, decimal_places=2)
+    rate = models.DecimalField("Tarifa",max_digits=10, decimal_places=2)
 
 class Service(CommonBaseModel):
     service_number = models.PositiveIntegerField("Número de servicio")
