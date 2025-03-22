@@ -7,4 +7,3 @@ class CommonBaseModel(models.Model):
 
     class Meta:
         abstract = True
-        ordering = ["-created_at"]

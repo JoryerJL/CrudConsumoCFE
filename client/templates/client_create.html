@@ -7,10 +7,100 @@
             <h4 class="card-title">Crear Cliente</h4>
         </div>
         <div class="card-body">
-            {{ client_form|crispy }}
-            <button type="submit" class="btn btn-success"> Crear Cliente </button>
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ client_form|crispy }}
+            <button type="submit" class="btn btn-success"> Crear Cliente</button>
             <a class="btn btn-danger" href="{% url 'service_list' %}">Cancelar</a>
-            <a class="btn btn-secondary justify-content-end">¿No esta tu colonia?, Agregala aqui.</a>
+            <button type="button" class="btn btn-secondary" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasRight"
+                    aria-controls="offcanvasRight">¿No está tu colonia? Agrégala aquí.
+            </button>
+            </form>
+        </div>
+    </div>
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header">
+            <h5 id="offcanvasRightLabel">Agregar Dirección</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div class="accordion" id="addressAccordion">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingState">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseState" aria-expanded="true" aria-controls="collapseState">
+                            Agregar Estado
+                        </button>
+                    </h2>
+                    <div id="collapseState" class="accordion-collapse collapse show" aria-labelledby="headingState"
+                         data-bs-parent="#addressAccordion">
+                        <div class="accordion-body">
+                            <form method="post" action="{% url 'add_state' %}">
+                                {% csrf_token %}
+                                {{ state_form|crispy }}
+                                <button type="submit" class="btn btn-primary">Agregar Estado</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingMunicipality">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseMunicipality" aria-expanded="true"
+                                aria-controls="collapseMunicipality">
+                            Agregar Municipio
+                        </button>
+                    </h2>
+                    <div id="collapseMunicipality" class="accordion-collapse collapse"
+                         aria-labelledby="headingMunicipality" data-bs-parent="#addressAccordion">
+                        <div class="accordion-body">
+                            <form method="post" action="{% url 'add_municipality' %}">
+                                {% csrf_token %}
+                                {{ municipality_form|crispy }}
+                                <button type="submit" class="btn btn-primary">Agregar Municipio</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingPostalCode">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapsePostalCode" aria-expanded="false"
+                                aria-controls="collapsePostalCode">
+                            Agregar Código Postal
+                        </button>
+                    </h2>
+                    <div id="collapsePostalCode" class="accordion-collapse collapse" aria-labelledby="headingPostalCode"
+                         data-bs-parent="#addressAccordion">
+                        <div class="accordion-body">
+                            <form method="post" action="{% url 'add_postal_code' %}">
+                                {% csrf_token %}
+                                {{ postal_code_form|crispy }}
+                                <button type="submit" class="btn btn-primary">Agregar Código Postal</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingColony">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseColony" aria-expanded="false" aria-controls="collapseColony">
+                            Agregar Colonia
+                        </button>
+                    </h2>
+                    <div id="collapseColony" class="accordion-collapse collapse" aria-labelledby="headingColony"
+                         data-bs-parent="#addressAccordion">
+                        <div class="accordion-body">
+                            <form method="post" action="{% url 'add_colony' %}">
+                                {% csrf_token %}
+                                {{ colony_form|crispy }}
+                                <button type="submit" class="btn btn-primary">Agregar Colonia</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}
