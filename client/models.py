@@ -21,7 +21,7 @@ class PostalCode(CommonBaseModel):
 
 class Colony(CommonBaseModel):
     name = models.CharField("Nombre", max_length=100)
-    postal_code = models.CharField("Código postal", max_length=5)
+    postal_code = models.ForeignKey(PostalCode, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
@@ -36,5 +36,11 @@ class Client(CommonBaseModel):
     interior_number = models.PositiveIntegerField("Número interior", null=True, blank=True)
     external_number = models.PositiveIntegerField("Exteranl interior", null=True, blank=True)
     colony = models.ForeignKey(Colony, on_delete=models.CASCADE)
-    postal_code = models.CharField("Código postal", max_length=5)
 
+def get_full_name(self):
+    return f"{self.name} {self.paternal_surname} {self.maternal_surname}"
+
+def get_full_address(self):
+    return (f"{self.street} {self.interior_number} {self.external_number} {self.colony} "
+            f"{self.colony.postal_code.municipality} "
+            f"{self.colony.postal_code.municipality.state} {self.colony.postal_code}")

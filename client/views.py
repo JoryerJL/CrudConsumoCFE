@@ -1,3 +1,9 @@
 from django.shortcuts import render
+from django.views.generic import ListView, CreateView
+from .models import State, PostalCode, Municipality, Colony, Client
 
-# Create your views here.
+class ClientListView(ListView):
+    model = Client
+    template_name = 'client_list.html'
+    context_object_name = 'clients'
+

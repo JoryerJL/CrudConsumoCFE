@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title">Clientes</h4>
+            <a class="btn btn-success" href="#">Crear Cliente</a>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table id="basicExample" class="table custom-table">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Nombre</th>
+                        <th>Número de telefono</th>
+                        <th>Dirección</th>
+                        <th>Opciones</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for client in clients %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ client.get_full_name }}</td>
+                            <td>{{ client.phone_number }}</td>
+                            <td>{{ client.get_full_address }}</td>
+                            <td>{{ service.rmu }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
