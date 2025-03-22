@@ -1,7 +1,7 @@
 from django import forms
 from .models import State, Municipality, PostalCode, Colony, Client
 
-class ClienteForm(forms.ModelForm):
+class ClientForm(forms.ModelForm):
     name = forms.CharField(label="Nombre", help_text="Escribe tu nombre", max_length=100, required=True)
     paternal_surname = forms.CharField(label="Apellido Paterno", help_text="Escribe tu apellido paterno",max_length=100, required=True)
     maternal_surname = forms.CharField(label="Apellido Materno", help_text="Escribe tu apellido materno",max_length=100, required=True)
@@ -15,7 +15,6 @@ class ClienteForm(forms.ModelForm):
         fields = ['name', 'paternal_surname', 'maternal_surname', 'phone_number', 'street', 'interior_number', 'external_number', 'colony']
         labels = {
             'colony': 'Colonia',
-            'postal_code': 'Código postal'
         }
 
 class StateForm(forms.ModelForm):
